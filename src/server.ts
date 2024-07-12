@@ -1,0 +1,32 @@
+import express from "express";
+import morgan from "morgan";
+import cors from "cors";
+
+class ServerBootstrap{
+    public app: express.Application = express();
+    private port: number = 8080;
+
+    constructor() {
+        this.app.use(morgan('dev'));
+        this.app.use(express.json());
+        this.app.use(express.urlencoded({ extended: true }));
+        this.app.use(cors());
+        this.app.use(express.static('public')); 
+
+        this.app.use("/api",this.routers())
+        this.listen()
+    }
+    routers(): Array<express.Router>{
+        return []
+    }
+
+    public listen() {
+        this.app.listen(this.port, () => {
+            console.log("-------------------------------------");
+            console.log(`Server listening on port ${this.port}`);
+            console.log("-------------------------------------");
+        })
+    }
+}
+
+new ServerBootstrap()
