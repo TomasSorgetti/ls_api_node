@@ -2,12 +2,11 @@ import * as dotenv from "dotenv";
 
 export abstract class ConfigServer{
     constructor() {
-        const nodeNameEnv = this.createPathEnv(this.nodeEnv)
-        dotenv.config({
+    const nodeNameEnv = this.createPathEnv(this.nodeEnv)
+    dotenv.config({
             path: nodeNameEnv
         })
-     }
-    
+    }
     public getEnv(key: string):string | undefined {
         return process.env[key];
     }
@@ -16,17 +15,17 @@ export abstract class ConfigServer{
     }
     
     public get nodeEnv(): string {
-        return this.getEnv("NODE_ENV")?.trim() || "production";
+        return this.getEnv("NODE_ENV")?.trim() || "";
     }
     
     public createPathEnv(path: string): string { 
-        const arrEnv: string[] = ["env"]
-        
-        if (path.length > 0) {   
-            const stringToArr = path.split(".");
-            arrEnv.unshift(...stringToArr);
-        }
-        return "." + arrEnv.join(".");
+    const arrEnv: string[] = ["env"]
+    
+    if (path.length > 0) {   
+        const stringToArr = path.split(".");
+        arrEnv.unshift(...stringToArr);
+    }
+    return "." + arrEnv.join(".");
     }
 
 }
