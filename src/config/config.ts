@@ -16,7 +16,7 @@ export abstract class ConfigServer{
     }
     
     public get nodeEnv(): string {
-        return this.getEnv("NODE_ENV")?.trim() || "prod";
+        return this.getEnv("NODE_ENV")?.trim() || "production";
     }
     
     public createPathEnv(path: string): string { 
