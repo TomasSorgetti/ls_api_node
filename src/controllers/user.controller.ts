@@ -2,6 +2,6 @@ import { Request, Response } from "express";
 
 export class UserController{
     getUser(req: Request, res: Response) {
-        res.send('Hello World!');
+        res.status(200).json({message: "Hello World"});
     }
 }
