@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
+import { UserRouter } from "./routes/user.router";
 
 class ServerBootstrap{
     public app: express.Application = express();
@@ -17,7 +18,7 @@ class ServerBootstrap{
         this.listen()
     }
     routers(): Array<express.Router>{
-        return []
+        return [new UserRouter().router]
     }
 
     public listen() {
