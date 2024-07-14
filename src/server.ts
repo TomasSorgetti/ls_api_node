@@ -44,7 +44,7 @@ class ServerBootstrap extends ConfigServer {
         try {
             await this.AppDataSource.initialize();
             console.log("Data Source has been initialized!");
-            console.log("hola mundo");
+            console.log("hola mundo 2");
             
         } catch (err) {
             console.error("Error during Data Source initialization:", err);
